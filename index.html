@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Best Bond</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      background: #0d0d0e;
+      color: rgb(246, 242, 242);
+      font-family: 'Courier New', monospace;
+    }
+
+    canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 0;
+    }
+
+    .container {
+      position: relative;
+      z-index: 2;
+      padding: 30px;
+      max-width: 800px;
+      margin: auto;
+    }
+
+    .btn-top {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      z-index: 3;
+    }
+
+    .btn-top button {
+      padding: 10px 20px;
+      background: #16d3da;
+      border: none;
+      color: rgba(3, 1, 19, 0.834);
+      font-size: 14px;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    .bottom-counter {
+      text-align: center;
+      color: hwb(0 98% 0%);
+      margin: 60px 0;
+    }
+
+    .bottom-counter h1 {
+      font-size: 1rem;
+      margin: 0;
+      color: #830c1e;
+    }
+
+    .timer {
+      font-size: 1.2rem;
+      margin: 20px 0;
+    }
+
+    .quote {
+      font-size: 1rem;
+      font-style: italic;
+      margin-top: 30px;
+    }
+
+    .code {
+      white-space: pre-line;
+      color: hwb(179 4% 30%);
+      font-size: 16px;
+      margin-bottom: 60px;
+    }
+
+    #bottom {
+      padding-bottom: 100px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Stars Background -->
+  <canvas id="stars"></canvas>
+
+  <!-- Content -->
+  <div class="container">
+
+    <div class="code">
+Hey Sharon! 💖...<br>
+Do you realize you never spoke to any girls in school... not even me?"
+In school.
+The guy who never talked to girls.
+Like—literally. Not a single word! 😤
+You were like the silent type.
+
+And yet... somehow...
+You ended up oneday epdinu theriuma.... 🤭
+How did that happen, huh nambave mudila?
+
+We met in 11th grade, Mother Theresa Matric Hr Sec School, Kanyakumari.
+I still remember — you were so serious, so quiet...
+But somehow, we clicked.
+Two funny idiots — one who never spoke to girls thats you , and me . 😌
+
+Soon we were laughing. Joking.
+You were still pretending to be shy — but I knew you were enjoying it.
+Don’t deny it now! 😏
+
+Then 11th ended... and poof!
+I went to Ooty — but you were in the same school...i Don’t know nee anga ena panranu.
+No calls. No messages.
+Typical Sharon. 🙄
+
+I thought, “Okay. Another silent guy. That’s it.”
+But life had other plans.
+
+Because who did I bump into during an "ADA" exam in Bangalore?
+YOU!
+Yes, Mr. Anti-Girl-Talker(entha pengal odum pesatha payan) himself! 😂
+And guess what? You actually talked to me! In public! With confidence!
+I thought is this real or cinema mathiri oru glitch ahh! Apdinu irunthuchi🤯
+
+August 7, 2024.
+10:42 PM.
+A message on LinkedIn.
+Not WhatsApp.
+Not Insta.
+LINKEDIN.
+Professional King, huh? 😂
+
+But honestly? That message made me smile.
+Because from that day... we started talking again.
+And talking. And laughing. And remembering everything.
+
+You — the guy who didn’t talk to girls —
+ended up becoming one of my favorite people to talk to.
+Isn’t that wild?
+
+So here’s what I want to say now:
+
+Sharon...
+Thanks for breaking your "no talking to girls" rule — just once.
+Because that one exception?
+It turned into a beautiful friendship. So you better stay with me forever, okay?
+Even if you get married — your wife can come, no problem — but you better still talk to me!" 😤😂❤️. 
+
+— Blessy 💌
+    </div>
+
+    <!-- Bottom Counter Section -->
+    <div id="bottom" class="bottom-counter">
+      <h1>Still counting the time we’ve been connected... 🌟🌙</h1>
+      <div class="timer" id="timer-bottom">Loading...</div>
+      <div class="quote">Be as a friend forever 😌</div>
+    </div>
+
+  </div>
+
+  <!-- Stars & Moon Animation -->
+  <script>
+    const canvas = document.getElementById("stars");
+    const ctx = canvas.getContext("2d");
+    let w = canvas.width = window.innerWidth;
+    let h = canvas.height = window.innerHeight;
+
+    const stars = [];
+    const starCount = 100;
+
+    for (let i = 0; i < starCount; i++) {
+      stars.push({
+        x: Math.random() * w,
+        y: Math.random() * h,
+        r: Math.random() * 1.5 + 0.5,
+        d: Math.random() * 0.5 + 0.05
+      });
+    }
+
+    function drawMoon() {
+      ctx.beginPath();
+      ctx.arc(w - 100, 100, 40, 0, Math.PI * 2);
+      ctx.fillStyle = "#f5f3ce";
+      ctx.shadowColor = "#fff";
+      ctx.shadowBlur = 15;
+      ctx.fill();
+      ctx.shadowBlur = 0;
+    }
+
+    function drawStars() {
+      ctx.clearRect(0, 0, w, h);
+      drawMoon();
+      for (let i = 0; i < starCount; i++) {
+        const s = stars[i];
+        ctx.beginPath();
+        ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
+        ctx.fillStyle = "white";
+        ctx.globalAlpha = Math.random();
+        ctx.fill();
+        ctx.globalAlpha = 1;
+      }
+    }
+
+    function animate() {
+      drawStars();
+      requestAnimationFrame(animate);
+    }
+
+    window.addEventListener('resize', () => {
+      w = canvas.width = window.innerWidth;
+      h = canvas.height = window.innerHeight;
+    });
+
+    animate();
+  </script>
+
+  <!-- Countdown Timer -->
+  <script>
+    const startDate = new Date('2019-08-07T22:42:00');
+
+    function updateTimer() {
+      const now = new Date();
+      const diff = now - startDate;
+
+      const seconds = Math.floor(diff / 1000);
+      const minutes = Math.floor(seconds / 60);
+      const hours = Math.floor(minutes / 60);
+      const days = Math.floor(hours / 24);
+      const years = Math.floor(days / 365.25);
+      const months = Math.floor((days % 365.25) / 30.44);
+      const remainingDays = Math.floor(days % 30.44);
+      const remainingHours = hours % 24;
+      const remainingMinutes = minutes % 60;
+      const remainingSeconds = seconds % 60;
+
+      const formattedTime = `${years} years, ${months} months, ${remainingDays} days\n` +
+                            `${remainingHours} hours, ${remainingMinutes} minutes, ${remainingSeconds} seconds`;
+
+      document.getElementById('timer-bottom').innerText = formattedTime;
+    }
+
+    setInterval(updateTimer, 1000);
+    updateTimer();
+  </script>
+
+</body>
+</html>
